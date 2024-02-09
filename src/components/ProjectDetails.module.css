@@ -1,0 +1,13 @@
+.details {
+  flex: 5;
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.details > img {
+  height: 80px;
+}

@@ -1,0 +1,13 @@
+.navigation {
+  flex: 1;
+  padding: 3rem 2rem;
+  margin-top: 10vh;
+  border-top-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  color: white;
+  background-color: black;
+}
