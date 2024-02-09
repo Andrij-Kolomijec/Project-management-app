@@ -11,3 +11,22 @@
   color: white;
   background-color: black;
 }
+
+.projects {
+  align-self: stretch;
+}
+
+.projects > li {
+  padding: 2px 5px;
+  font-size: 1.5rem;
+  color: dimgray;
+  margin-bottom: 1rem;
+}
+
+.projects > li:hover,
+.projects > li.active {
+  background-color: rgb(59, 59, 59);
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}

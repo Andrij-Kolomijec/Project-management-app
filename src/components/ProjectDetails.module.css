@@ -1,13 +1,29 @@
 .details {
-  flex: 5;
-  margin-top: 20vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   gap: 2rem;
+  padding: 0 5vw;
 }
 
-.details > img {
-  height: 80px;
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details input {
+  width: 50%;
+  height: 25px;
+  padding-left: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: #d8d8d8;
+}
+
+.task {
+  background-color: #d8d8d8;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
 }

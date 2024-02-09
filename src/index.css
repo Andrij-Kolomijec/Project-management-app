@@ -5,9 +5,14 @@
 
 body {
   height: 100vh;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 #root {
   display: flex;
   height: 100%;
+}
+
+ul {
+  list-style: none;
 }
