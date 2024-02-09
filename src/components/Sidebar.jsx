@@ -1,18 +1,17 @@
 import classes from "./Sidebar.module.css";
 import PropTypes from "prop-types";
 import Button from "./Button";
-import projects from "./projects";
 
-export default function Sidebar({ onAddClick, onShowProject, showedProject }) {
+export default function Sidebar({ projects, onShowProject, showProject }) {
   return (
     <section className={classes.navigation}>
       <h2>YOUR PROJECTS</h2>
-      <Button onClick={onAddClick}>+ Add Project</Button>
+      <Button onClick={() => onShowProject("input")}>+ Add Project</Button>
       <ul className={classes.projects}>
         {projects.map((project) => {
           return (
             <li
-              className={showedProject === project ? classes.active : undefined}
+              className={showProject === project ? classes.active : undefined}
               onClick={() => onShowProject(project)}
               key={project.title}
             >
@@ -26,7 +25,7 @@ export default function Sidebar({ onAddClick, onShowProject, showedProject }) {
 }
 
 Sidebar.propTypes = {
-  onAddClick: PropTypes.func,
+  projects: PropTypes.array,
   onShowProject: PropTypes.func,
-  showedProject: PropTypes.object,
+  showProject: PropTypes.object,
 };

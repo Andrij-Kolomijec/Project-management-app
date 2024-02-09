@@ -1,4 +1,4 @@
-let projects = [
+let initialProjects = [
   {
     title: "something",
     description: "asdlhsdkfj fklhjgb kljhasd",
@@ -9,8 +9,8 @@ let projects = [
     title: "ass",
     description: "assdlhsdkfj fklhjgb kljhasd",
     due: new Date().toLocaleDateString(),
-    tasks: [],
+    tasks: ["afasd"],
   },
 ];
 
-export default projects;
+export default initialProjects;
