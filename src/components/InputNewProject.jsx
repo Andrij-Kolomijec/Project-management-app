@@ -1,87 +1,85 @@
-import { useState } from "react";
+import { useRef } from "react";
 import classes from "./InputNewProject.module.css";
 import PropTypes from "prop-types";
 import Button from "./Button";
+import Modal from "./Modal";
 
-export default function InputNewProject({
-  showProject,
-  addNewProject,
-  projects,
-}) {
-  const [newProject, setNewProject] = useState({
-    title: null,
-    description: null,
-    due: null,
-    tasks: [],
-  });
+export default function InputNewProject({ onAdd, onCancel }) {
+  const modal = useRef();
+
+  const title = useRef();
+  const description = useRef();
+  const due = useRef();
 
   function handleSave(e) {
     e.preventDefault();
-    if (!newProject.title || !newProject.description || !newProject.due) {
-      alert("Please fill in all required fields.");
+    const enteredTitle = title.current.value;
+    const enteredDescription = description.current.value;
+    const enteredDue = due.current.value;
+
+    if (
+      enteredTitle.trim() === "" ||
+      enteredDescription.trim() === "" ||
+      enteredDue.trim() === ""
+    ) {
+      modal.current.open();
       return;
     }
-    addNewProject([...projects, newProject]);
-    showProject(newProject);
+
+    onAdd({
+      title: enteredTitle,
+      description: enteredDescription,
+      due: enteredDue,
+    });
   }
 
   return (
-    <form id="input-form" className={classes.inputForm}>
-      <div className={classes.buttons}>
-        <Button
-          onClick={() => showProject(null)}
-          bgColor="transparent"
-          hoverColor="transparent"
-          color="black"
-        >
-          Cancel
-        </Button>
-        <Button
-          onClick={handleSave}
-          bgColor="black"
-          color="white"
-          hoverColor="gray"
-        >
-          Save
-        </Button>
-      </div>
+    <>
+      <Modal ref={modal} buttonCaption="Close">
+        <h2>Invalid input</h2>
+        <p>Please fill in all fields.</p>
+      </Modal>
+      <form id="input-form" className={classes.inputForm}>
+        <div className={classes.buttons}>
+          <Button
+            onClick={onCancel}
+            bgColor="transparent"
+            hoverColor="transparent"
+            color="black"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSave}
+            bgColor="black"
+            color="white"
+            hoverColor="gray"
+          >
+            Save
+          </Button>
+        </div>
 
-      <label htmlFor="input-title">TITLE</label>
-      <input
-        id="input-title"
-        type="text"
-        name="title"
-        required
-        onChange={(e) =>
-          setNewProject({ ...newProject, title: e.target.value })
-        }
-      />
+        <label htmlFor="input-title">TITLE</label>
+        <input ref={title} id="input-title" type="text" name="title" required />
 
-      <label htmlFor="input-textarea">DESCRIPTION</label>
-      <textarea
-        name=""
-        id="input-textarea"
-        cols="30"
-        rows="5"
-        required
-        onChange={(e) =>
-          setNewProject({ ...newProject, description: e.target.value })
-        }
-      ></textarea>
+        <label htmlFor="input-textarea">DESCRIPTION</label>
+        <textarea
+          ref={description}
+          name=""
+          id="input-textarea"
+          cols="30"
+          rows="5"
+          required
+        ></textarea>
 
-      <label htmlFor="input-due-date">DUE DATE</label>
-      <input
-        id="input-due-date"
-        type="date"
-        required
-        onChange={(e) => setNewProject({ ...newProject, due: e.target.value })}
-      />
-    </form>
+        <label htmlFor="input-due-date">DUE DATE</label>
+        <input ref={due} id="input-due-date" type="date" required />
+      </form>
+    </>
   );
 }
 
 InputNewProject.propTypes = {
-  showProject: PropTypes.func,
-  addNewProject: PropTypes.func,
-  projects: PropTypes.array,
+  onAdd: PropTypes.func,
+  onCancel: PropTypes.func,
 };
