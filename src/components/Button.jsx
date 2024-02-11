@@ -6,7 +6,6 @@ export default function Button({
   bgColor = "dimgray",
   color = "#d8d8d8",
   hoverColor = "#818181",
-  onClick = null,
   children,
   ...props
 }) {
@@ -14,13 +13,12 @@ export default function Button({
 
   const style = {
     backgroundColor: isHovered ? hoverColor : bgColor,
-    color: color,
+    color,
   };
 
   return (
     <button
       style={style}
-      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={classes.button}
@@ -35,6 +33,5 @@ Button.propTypes = {
   bgColor: PropTypes.string,
   color: PropTypes.string,
   hoverColor: PropTypes.string,
-  onClick: PropTypes.func,
   children: PropTypes.string,
 };
