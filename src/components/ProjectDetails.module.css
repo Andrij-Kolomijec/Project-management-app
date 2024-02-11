@@ -19,6 +19,10 @@
   background-color: #d8d8d8;
 }
 
+.description {
+  white-space: pre-wrap;
+}
+
 .task {
   background-color: #d8d8d8;
   border-radius: 5px;

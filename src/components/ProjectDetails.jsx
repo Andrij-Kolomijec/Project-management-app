@@ -34,7 +34,7 @@ export default function ProjectDetails({
         </Button>
       </div>
       <p>{formattedDate}</p>
-      <p>{project.description}</p>
+      <p className={classes.description}>{project.description}</p>
       <hr />
       <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={projectTasks} />
     </div>
