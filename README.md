@@ -1,5 +1,3 @@
 # Project management
 
-[:arrow_forward: visit here](https://ephemeral-panda-5345ba.netlify.app/)
-
-Simple project management React app for practicing useState, useRef, useImperativeHandle and portals.
+React project management app for practicing React hooks (useState, useRef, useImperativeHandle) according to the assignment from Maximilian Schwarzmüller's 'React - The Complete Guide 2024 (incl. React Router & Redux)' course.
